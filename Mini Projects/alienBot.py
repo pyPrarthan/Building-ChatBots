@@ -27,7 +27,12 @@ class AlienBot:
   # Define .greet() below:
   def greet(self):
     self.name = input("Hello there, what's your name? ")
-    will_help = (f"Hi {self.name}, I'm Etcetera. I'm not from this planet. Will you help me learn about your planet? ")
+    will_help = input(f"Hi {self.name}, I'm Etcetera. I'm not from this planet. Will you help me learn about your planet? ")
+
+    if will_help.lower() in self.negative_responses:
+      print("Ok, have a nice Earth day!")
+      return
+    self.chat()
 
   # Define .make_exit() here:
   def make_exit(self, reply):
@@ -58,4 +63,5 @@ class AlienBot:
     return "Inside .no_match_intent()"
 
 # Create an instance of AlienBot below:
-
+alienOne = AlienBot()
+alienOne.greet()
