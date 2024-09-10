@@ -36,12 +36,17 @@ class AlienBot:
 
   # Define .make_exit() here:
   def make_exit(self, reply):
-    pass
+    for exit in self.exit_commands:
+      if exit in reply.lower():
+        print("Ok, have a nice Earth Day!")
+        return True
 
   # Define .chat() next:
   def chat(self):
     reply = input(random.choice(self.random_questions)).lower()
-    
+    while not self.make_exit(reply):
+      reply = input("How are you? ").lower()
+
   # Define .match_reply() below:
   def match_reply(self, reply):
     pass
