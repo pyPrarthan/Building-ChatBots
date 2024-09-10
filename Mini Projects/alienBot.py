@@ -19,9 +19,10 @@ class AlienBot:
     )
 
   def __init__(self):
-    self.alienbabble = {'describe_planet_intent': r'',
-                        'answer_why_intent': r'',
-                        'cubed_intent': r''
+    self.alienbabble = {'describe_planet_intent': r'.*\s*your planet.*',
+                        'answer_why_intent': r'why\sare.*',
+                        'cubed_intent': r'',
+                        'unsure_response_intnet':r''
                             }
 
   # Define .greet() below:
@@ -53,15 +54,21 @@ class AlienBot:
       intent = key
       regex_pattern = value
       found_match = re.match(regex_pattern, reply)
+      if found_match and intent == 'describe_planet_intent':
+        return self.describe_planet_intent()
+      elif found_match and intent == 'answer_why_intent':
+        return self.answer_why_intent()
 
 
   # Define .describe_planet_intent():
   def describe_planet_intent(self):
-    return "Inside .describe_planet_intent()"
+    responses = ("My planet is a utopia of diverse organisms and species.", "I am from Opidipus, the capital of the Wayward Galaxies.")
+    random.choice(responses)
 
   # Define .answer_why_intent():
   def answer_why_intent(self):
-    return "Inside .answer_why_intent()"
+    responses = ("I come in peace.", "I am here to collect data on your planet and its inhabitants.", "I heard the coffee is good")
+    return random.choice(responses)
        
   # Define .cubed_intent():
   def cubed_intent(self, number):
