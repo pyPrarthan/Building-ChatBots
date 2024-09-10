@@ -40,8 +40,8 @@ class AlienBot:
 
   # Define .chat() next:
   def chat(self):
-    pass
-
+    reply = input(random.choice(self.random_questions)).lower()
+    
   # Define .match_reply() below:
   def match_reply(self, reply):
     pass
