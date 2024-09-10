@@ -45,11 +45,15 @@ class AlienBot:
   def chat(self):
     reply = input(random.choice(self.random_questions)).lower()
     while not self.make_exit(reply):
-      reply = input("How are you? ").lower()
+     input(self.match_reply(reply))
 
   # Define .match_reply() below:
   def match_reply(self, reply):
-    pass
+    for key,value in self.alienbabble.items():
+      intent = key
+      regex_pattern = value
+      found_match = re.match(regex_pattern, reply)
+
 
   # Define .describe_planet_intent():
   def describe_planet_intent(self):
